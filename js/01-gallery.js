@@ -3,8 +3,10 @@ import { galleryItems } from './gallery-items.js';
 
 const galleryContainer = document.querySelector('.gallery');
 const card = (galleryItemCreate(galleryItems));
-
 console.log(card);
+
+galleryContainer.insertAdjacentHTML("beforeend", card);
+console.log(galleryContainer);
 
 function galleryItemCreate (galleryItems) {
     return galleryItems.map(({preview, original, description}) => {
