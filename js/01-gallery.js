@@ -8,9 +8,11 @@ console.log(card);
 galleryContainer.insertAdjacentHTML("beforeend", card);
 console.log(galleryContainer);
 
+galleryContainer.addEventListener('click', onGalleryContainerClick);
+
 function galleryItemCreate (galleryItems) {
     return galleryItems.map(({preview, original, description}) => {
-           `<div class="gallery__item">
+          return `<div class="gallery__item">
                <a class="gallery__link" href="${original}">
                 <img
                     class="gallery__image"
@@ -22,6 +24,17 @@ function galleryItemCreate (galleryItems) {
                 </div>`})
     .join('');
     
+}
+
+function onGalleryContainerClick(e) {
+    e.preventDefault();
+    
+    if (e.target.nodeName !== "IMG") {
+        return;
+    }
+
+    const bigImageUrl = e.target.dataset.source;
+    console.log(bigImageUrl);
 }
 
 
