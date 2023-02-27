@@ -35,6 +35,16 @@ function onGalleryContainerClick(e) {
 
     const bigImageUrl = e.target.dataset.source;
     console.log(bigImageUrl);
+    const instance = basicLightbox.create(`
+		<img width="1400" height="900" src="${bigImageUrl}">
+	`);
+    instance.show();
+
+    window.addEventListener('keydown', (e) => {
+        if (e.code === "Escape") {
+            instance.close();
+        }
+    })
 }
 
 
