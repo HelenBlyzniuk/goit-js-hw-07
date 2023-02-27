@@ -2,17 +2,25 @@ import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
 const galleryContainer = document.querySelector('.gallery');
+const card = (galleryItemCreate(galleryItems));
 
-console.log(galleryItemCreate(galleryItems));
+console.log(card);
 
-function galleryItemCreate (array) {
-    const card = array.map((option) => {
-       return `<img src = "${option.preview}" alt = "${option.decsription}" data-src = "${option.original}" > </img > `;
-    })
+function galleryItemCreate (galleryItems) {
+    return galleryItems.map(({preview, original, description}) => {
+           `<div class="gallery__item">
+               <a class="gallery__link" href="${original}">
+                <img
+                    class="gallery__image"
+                    src="${preview}"
+                    data-source="${original}"
+                    alt="${description}"
+                />
+                </a>
+                </div>`})
     .join('');
-    console.log(card[0]);
+    
 }
-
 
 
 // console.log(galleryItems);
